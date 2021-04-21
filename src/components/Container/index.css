@@ -1,0 +1,17 @@
+.container {    
+    flex: 1;
+    box-shadow: 1px 1px 4px 2px #DDD;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    background: #FFF;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 95%;
+        height: 100%;        
+    }
+}
