@@ -1,0 +1,16 @@
+.formulario-envio {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.text-area-mensagem {
+    padding: 5px;
+    border: 1px solid #DDD;
+    color: #555;
+    resize: none;
+    flex: 1;
+}
+.botao-enviar {
+    margin: 0px 10px;
+    font-size: 35px;
+}

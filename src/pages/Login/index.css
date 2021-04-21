@@ -1,4 +1,4 @@
-.conteudo {
+.conteudo-login {
     flex-direction: column;
     width: 60%;
     color: #777;
@@ -8,7 +8,7 @@
 .titulo-login {
     flex: 1;
     width: 100%;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
     justify-content: center;
     align-items: center;
@@ -18,13 +18,31 @@
     padding: 10px;
     font-size: 18px;
     color: #777;
-    margin: 5px 0 30px 0;
     border: 1px solid #DDD;
 }
-.label {    
-    font-size: 24px;
+.radio-avatar {
+    flex-direction: column;
 }
-
+.grupo-radio-avatar{
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 5px 0;
+}
+.grupo-radio-avatar i {
+    margin: 0px 10px;
+}
+.label {    
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.botao-login {
+    margin: 20px 0;
+}
 @media screen and (max-width: 1200px) {
-    
+    .conteudo-login {
+        width: 90%;
+    }   
 }

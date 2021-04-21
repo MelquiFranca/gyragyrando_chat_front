@@ -1,0 +1,43 @@
+.conteudo-chat {
+    flex-direction: row;
+    width: 100%;
+    flex: 1;
+    padding: 10px 20px;
+    color: #555;
+}
+.box-chat {
+    flex: 6;
+    flex-direction: column;
+    border-left: 1px solid #DDD;
+    padding: 0 20px;
+}
+.box-usuarios {
+    flex: 1;
+    flex-direction: column;
+    padding: 0 20px 0 0;
+    overflow: auto;
+}
+
+
+@media screen and (max-width: 900px) {
+    .conteudo-chat {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .box-chat {
+        flex: 1;
+        border-left: none;
+        padding: 0 0px;
+    }
+    .box-usuarios {
+        flex: none;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 0px;
+        height: 80px;
+        border-bottom: 1px solid #DDD;
+    }
+    .box-usuarios>.label {
+        display: none;
+    }
+}

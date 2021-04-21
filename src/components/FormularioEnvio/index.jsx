@@ -7,21 +7,21 @@ const FormularioEnvio = () => {
         alert('Enviou')
     }
 
-    return (<form>
+    return (<form className="formulario-envio">
         <textarea 
             id="" 
-            cols="30" 
-            rows="2" 
-            className=""
+            cols="60" 
+            rows="4"
+            placeholder="Digite sua mensagem..."
+            className="text-area-mensagem"
             onChange={({value}) => setInputTexto(value)}
             value={inputTexto}
         ></textarea>
         <button 
-            className="cor-primaria"
+            className="botao cor-primaria botao-enviar"
             onClick={ _=> handleClickEnviar}
         >
-            <i className="fa fa-paper"/>
-            teste
+            <i className="fa fa-paper-plane"/>            
         </button>
     </form>)
 }
