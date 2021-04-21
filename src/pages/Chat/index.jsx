@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CaixaMensagens from '../../components/CaixaMensagens'
 import Container from '../../components/Container'
 import FormularioEnvio from '../../components/FormularioEnvio'
@@ -7,37 +7,34 @@ import Usuario from '../../components/Usuario'
 import './index.css'
 
 const USUARIOS = [
-    {nome:'melquisedeque', tipo: 1},
-    {nome:'melquisedeque', tipo: 1},
     {nome:'catia frança', tipo: 0},
-    {nome:'melquisedeque', tipo: 1},
-    {nome:'melquisedeque', tipo: 1},
     {nome:'daniella lima', tipo: 0},
-    {nome:'melquisedeque', tipo: 1},
-    {nome:'melquisedeque', tipo: 1},
-    {nome:'gabriela barbosa', tipo: 0},
-    {nome:'melquisedeque', tipo: 1},
-    {nome:'melquisedeque', tipo: 1},
-    {nome:'catia frança', tipo: 0},
-    {nome:'melquisedeque', tipo: 1},
-    {nome:'melquisedeque', tipo: 1},
-    {nome:'daniella lima', tipo: 0},
-    {nome:'melquisedeque', tipo: 1},
-    {nome:'melquisedeque', tipo: 1},
     {nome:'gabriela barbosa', tipo: 0},
 ]
 
 const Chat = () => {
+    const [usuarioLogado, setUsuarioLogado] = useState(null)
+
+    useEffect(()=> {
+        const nome = localStorage.getItem('nome')
+        const tipo = localStorage.getItem('tipo')
+
+        setUsuarioLogado({
+            nome,
+            tipo
+        })
+    }, [])
     return (<>
         <HeaderTitulo />
         <Container>
             <div className="conteudo-chat">
                 <div className="box-usuarios">
                     <label htmlFor="" className="label">Usuários</label>
-                    {USUARIOS.map(usuario => <Usuario usuario={usuario}/>)}
+                    {usuarioLogado && <Usuario usuario={usuarioLogado}/>}
+                    {USUARIOS.map((usuario, index) => <Usuario usuario={usuario} key={index}/>)}
                 </div>
                 <div className="box-chat">
-                    <CaixaMensagens />
+                    <CaixaMensagens mensagens={[]}/>
                     <FormularioEnvio />
                 </div>
             </div>

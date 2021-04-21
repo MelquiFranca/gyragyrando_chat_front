@@ -3,12 +3,18 @@ import Container from '../../components/Container'
 import HeaderTitulo from '../../components/HeaderTitulo'
 import './index.css'
 
-const Login = () => {
+const Login = ({history}) => {
     const [inputApelido, setInputApelido] = useState('')
     const [inputAvatar, setInputAvatar] = useState('1')
 
     const handleClickLogin = () => {
-        alert('Enviou')
+        if(inputApelido.trim().length < 3) {
+            alert('Favor inserir um Apelido com pelo menos 3 caracteres.')
+            return
+        }
+        localStorage.setItem('nome', inputApelido)
+        localStorage.setItem('tipo', inputAvatar)
+        history.push('Chat')
     }
 
     return (<>
@@ -27,7 +33,7 @@ const Login = () => {
                     className="input-texto"
                     value={inputApelido}
                     placeholder="Digite seu nickname..."
-                    onChange={({value}) => setInputApelido(value)}
+                    onChange={({target}) => setInputApelido(target.value)}
                 />
 
                 <label htmlFor="" className="label">Avatar</label>
