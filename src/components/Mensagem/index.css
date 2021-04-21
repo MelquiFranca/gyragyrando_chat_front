@@ -1,0 +1,30 @@
+.mensagem {
+    padding: 10px 15px;
+    flex-direction: column;
+    margin: 10px 0;
+    max-width: 70%;
+}
+.usuario-mensagem {
+    height: 30px;
+    font-size: 12px;
+}
+.usuario-mensagem-logado {
+    justify-content: flex-end;
+}
+.usuario-mensagem-outros {
+    justify-content: flex-start;
+}
+.conteudo-mensagem {
+    flex: 1;
+    font-size: 14px;    
+}
+.mensagem-logado {
+    align-self: flex-end;
+    background: linear-gradient(90deg, rgba(25,127,210,1) 0%, rgba(104,157,212,1) 52%, rgba(45,126,214,1) 100%);
+    color: #FFF;
+}
+.mensagem-outros {
+    align-self: flex-start;
+    background: linear-gradient(90deg, rgba(251,153,125,1) 0%, rgba(221,98,68,1) 52%, rgba(227,129,104,1) 100%);
+    color: #FFF;
+}

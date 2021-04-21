@@ -11,7 +11,7 @@ const FormularioEnvio = () => {
         <textarea 
             id="" 
             cols="60" 
-            rows="4"
+            rows="3"
             placeholder="Digite sua mensagem..."
             className="text-area-mensagem"
             onChange={({value}) => setInputTexto(value)}

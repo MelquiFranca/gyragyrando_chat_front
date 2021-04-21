@@ -1,7 +1,8 @@
 .caixa-mensagens {
     flex: 3;
+    flex-direction: column;
     border: 2px solid #DDD;
     margin-bottom: 5px;
     padding: 10px 20px;
-    overflow-y: auto;
+    overflow-y: scroll;
 }

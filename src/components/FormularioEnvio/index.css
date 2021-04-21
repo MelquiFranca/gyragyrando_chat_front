@@ -7,6 +7,7 @@
     padding: 5px;
     border: 1px solid #DDD;
     color: #555;
+    font-size: 16px;
     resize: none;
     flex: 1;
 }

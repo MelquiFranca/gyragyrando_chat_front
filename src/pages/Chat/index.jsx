@@ -7,9 +7,9 @@ import Usuario from '../../components/Usuario'
 import './index.css'
 
 const USUARIOS = [
-    {nome:'catia frança', tipo: 0},
-    {nome:'daniella lima', tipo: 0},
-    {nome:'gabriela barbosa', tipo: 0},
+    {nome:'Toca Gado', tipo: 0},
+    {nome:'Fulano de Tal', tipo: 0},
+    {nome:'Jaca Gol', tipo: 0},
 ]
 
 const Chat = () => {
@@ -30,8 +30,10 @@ const Chat = () => {
             <div className="conteudo-chat">
                 <div className="box-usuarios">
                     <label htmlFor="" className="label">Usuários</label>
-                    {usuarioLogado && <Usuario usuario={usuarioLogado}/>}
-                    {USUARIOS.map((usuario, index) => <Usuario usuario={usuario} key={index}/>)}
+                    <div className="lista-usuarios">
+                        {usuarioLogado && <Usuario usuario={usuarioLogado}/>}
+                        {USUARIOS.map((usuario, index) => <Usuario usuario={usuario} key={index}/>)}
+                    </div>
                 </div>
                 <div className="box-chat">
                     <CaixaMensagens mensagens={[]}/>
