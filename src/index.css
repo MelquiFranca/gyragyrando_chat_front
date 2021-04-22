@@ -63,6 +63,6 @@ div, ul, li, button, h1,h2,h3,h4,h5,h6 {
 
 @media screen and (max-width: 798px) {
   #root {
-    padding: 0px;
+    padding: 20px 0;
   }
 }

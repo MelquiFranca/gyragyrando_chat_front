@@ -3,7 +3,7 @@ import './index.css'
 
 const HeaderTitulo = () => {
     return (<h1 className="titulo">
-        CHAT GYRA GYRANDO
+        GYRANDO
     </h1>)
 }
 
