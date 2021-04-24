@@ -1,24 +1,44 @@
 import React, { useState } from 'react'
+import { useMutation } from '@apollo/client'
 import Container from '../../components/Container'
 import HeaderTitulo from '../../components/HeaderTitulo'
+import { LOGIN_USUARIO } from '../../querys'
 import './index.css'
 
 const Login = ({history}) => {
     const [inputApelido, setInputApelido] = useState('')
     const [inputAvatar, setInputAvatar] = useState('1')
 
+    const [loginUsuario, { data, loading, error }] = useMutation(LOGIN_USUARIO, {
+        onCompleted: dados => {
+            if(error)
+                alert(error.errors[0].message)
+                
+            if(data?.login) {
+                localStorage.setItem('id', data.login.id)
+                localStorage.setItem('nome', data.login.nome)
+                localStorage.setItem('tipo', data.login.tipo)
+                history.push('Chat')
+            }
+        }
+    })
+    
     const handleClickLogin = () => {
         if(inputApelido.trim().length < 3) {
             alert('Favor inserir um Apelido com pelo menos 3 caracteres.')
             return
-        }
-        localStorage.setItem('nome', inputApelido)
-        localStorage.setItem('tipo', inputAvatar)
-        history.push('Chat')
+        }       
+
+        loginUsuario({ variables: { loginNome: inputApelido, loginTipo: inputAvatar === '1' } })        
     }
 
+    if(!loading && error) 
+        return <p>
+                Erro ao Acessar Conectar.
+                Atualize a página par atentar novamente.
+            </p>
     return (<>
-        <HeaderTitulo />
+        <HeaderTitulo telaLogin={true} />
         <Container>
             <div className="titulo-login">Entrar no Chat</div>
             <div className="conteudo-login">

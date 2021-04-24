@@ -8,15 +8,11 @@ import Usuario from '../../components/Usuario'
 import { LISTA_USUARIOS_LOGADOS, LISTA_MENSAGENS } from '../../querys'
 import './index.css'
 
-const USUARIOS = [
-    {nome:'Toca Gado', tipo: 0},
-    {nome:'Fulano de Tal', tipo: 0},
-    {nome:'Jaca Gol', tipo: 0},
-]
-
 const Chat = () => {
     const [usuarioLogado, setUsuarioLogado] = useState({})
-    const {data: dataUsuarios, loading: loadingUsuarios, error: errorUsuarios } = useQuery(LISTA_USUARIOS_LOGADOS)
+    const {data: dataUsuarios, loading: loadingUsuarios, error: errorUsuarios } = useQuery(LISTA_USUARIOS_LOGADOS, {
+        // pollInterval: 500,
+    })
     const {data: dataMensagens, loading: loadingMensagens, error: errorMensagens } = useQuery(LISTA_MENSAGENS)
     
     useEffect(()=> {
@@ -40,7 +36,11 @@ const Chat = () => {
                     <div className="lista-usuarios">
                         {usuarioLogado && <Usuario usuario={usuarioLogado}/>}
                         
-                        {(!loadingUsuarios && dataUsuarios) && dataUsuarios.usuarios.map((usuario, index) => <Usuario usuario={usuario} key={index}/>)}
+                        {
+                            (!loadingUsuarios && dataUsuarios) 
+                            && 
+                            dataUsuarios.usuarios.map((usuario, index) => <Usuario usuario={usuario} key={index}/>)
+                        }
                     </div>
                 </div>
                 <div className="box-chat">

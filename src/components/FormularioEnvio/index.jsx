@@ -1,13 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { useMutation } from '@apollo/client'
 import './index.css'
-
+import { ENVIAR_MENSAGEM } from '../../querys'
 const FormularioEnvio = () => {
     const [inputTexto, setInputTexto] = useState('')
+    const [enviarMensagem, { loading, error }] = useMutation(ENVIAR_MENSAGEM)
+
     const handleClickEnviar = () => {
-        alert('Enviou')
+        enviarMensagem({ 
+            variables: {
+                conteudo: inputTexto,
+                usuarioId: localStorage.getItem('id')
+            }
+        })
+
+        if(error)
+            alert(error.errors[0].message)
     }
 
-    return (<form className="formulario-envio">
+    return (<div className="formulario-envio">
         <textarea 
             id="" 
             cols="60" 
@@ -19,11 +30,11 @@ const FormularioEnvio = () => {
         ></textarea>
         <button 
             className="botao cor-primaria botao-enviar"
-            onClick={ _=> handleClickEnviar}
+            onClick={ _=> handleClickEnviar()}
         >
             <i className="fa fa-paper-plane"/>            
         </button>
-    </form>)
+    </div>)
 }
 
 export default FormularioEnvio

@@ -4,7 +4,7 @@ import './index.css'
 
 const CaixaMensagens = ({ mensagens }) => {    
     return (<div className="caixa-mensagens">
-        {mensagens.map(mensagem => <Mensagem mensagem={mensagem}/>)}
+        {mensagens.map((mensagem, index) => <Mensagem mensagem={mensagem} key={index}/>)}
     </div>)
 }
 

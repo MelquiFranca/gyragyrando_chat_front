@@ -4,13 +4,13 @@ import './index.css'
 const Mensagem = ({mensagem}) => {
     const [logado, setLogado] = useState(false)
     useEffect(() => {
-        const usuarioLogado = localStorage.getItem('nome')
+        const idUsuarioLogado = localStorage.getItem('id')
         if(mensagem?.nome)
-            setLogado(mensagem.nome === usuarioLogado)
+            setLogado(mensagem.usuario.id === idUsuarioLogado)
     }, [mensagem])
 
     return (<div className={`mensagem ${logado ? 'mensagem-logado' : 'mensagem-outros'}`}>
-        <div className={`usuario-mensagem ${logado ? 'usuario-mensagem-logado' : 'usuario-mensagem-outros'}`}>{mensagem?.nome}</div>
+        <div className={`usuario-mensagem ${logado ? 'usuario-mensagem-logado' : 'usuario-mensagem-outros'}`}>{mensagem?.usuario?.nome}</div>
         <div className="conteudo-mensagem">{mensagem?.conteudo}</div>
     </div>)
 }
