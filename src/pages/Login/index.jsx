@@ -14,10 +14,10 @@ const Login = ({history}) => {
             if(error)
                 alert(error.errors[0].message)
                 
-            if(data?.login) {
-                localStorage.setItem('id', data.login.id)
-                localStorage.setItem('nome', data.login.nome)
-                localStorage.setItem('tipo', data.login.tipo)
+            if(dados?.login) {
+                localStorage.setItem('id', dados.login.id)
+                localStorage.setItem('nome', dados.login.nome)
+                localStorage.setItem('tipo', dados.login.tipo)
                 history.push('Chat')
             }
         }

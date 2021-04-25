@@ -4,8 +4,8 @@ import './index.css'
 const Mensagem = ({mensagem}) => {
     const [logado, setLogado] = useState(false)
     useEffect(() => {
-        const idUsuarioLogado = localStorage.getItem('id')
-        if(mensagem?.nome)
+        const idUsuarioLogado = localStorage.getItem('id').toString()
+        if(mensagem?.usuario)
             setLogado(mensagem.usuario.id === idUsuarioLogado)
     }, [mensagem])
 

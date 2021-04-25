@@ -8,21 +8,19 @@ import Usuario from '../../components/Usuario'
 import { LISTA_USUARIOS_LOGADOS, LISTA_MENSAGENS } from '../../querys'
 import './index.css'
 
-const Chat = () => {
-    const [usuarioLogado, setUsuarioLogado] = useState({})
+const Chat = ({navigation}) => {
     const {data: dataUsuarios, loading: loadingUsuarios, error: errorUsuarios } = useQuery(LISTA_USUARIOS_LOGADOS, {
         // pollInterval: 500,
     })
     const {data: dataMensagens, loading: loadingMensagens, error: errorMensagens } = useQuery(LISTA_MENSAGENS)
     
     useEffect(()=> {
+        const id = localStorage.getItem('id')
         const nome = localStorage.getItem('nome')
-        const tipo = localStorage.getItem('tipo')
 
-        setUsuarioLogado({
-            nome,
-            tipo
-        })
+        if(!id || !nome)
+            navigation.history('Login')
+
     }, [])
 
     if(errorUsuarios || errorMensagens) return <p>Erro ao carregar Informações</p>
@@ -33,9 +31,7 @@ const Chat = () => {
             <div className="conteudo-chat">
                 <div className="box-usuarios">
                     <label htmlFor="" className="label">Usuários</label>
-                    <div className="lista-usuarios">
-                        {usuarioLogado && <Usuario usuario={usuarioLogado}/>}
-                        
+                    <div className="lista-usuarios">                        
                         {
                             (!loadingUsuarios && dataUsuarios) 
                             && 

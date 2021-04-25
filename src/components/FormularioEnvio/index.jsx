@@ -4,7 +4,10 @@ import './index.css'
 import { ENVIAR_MENSAGEM } from '../../querys'
 const FormularioEnvio = () => {
     const [inputTexto, setInputTexto] = useState('')
-    const [enviarMensagem, { loading, error }] = useMutation(ENVIAR_MENSAGEM)
+    const [enviarMensagem, { loading, error }] = useMutation(ENVIAR_MENSAGEM, {
+        onCompleted: dados => console.log(dados),
+        // onError: error => alert('Ocorreu um erro ao enviar a Mensagem.')
+    })
 
     const handleClickEnviar = () => {
         enviarMensagem({ 
@@ -13,9 +16,6 @@ const FormularioEnvio = () => {
                 usuarioId: localStorage.getItem('id')
             }
         })
-
-        if(error)
-            alert(error.errors[0].message)
     }
 
     return (<div className="formulario-envio">
@@ -25,14 +25,14 @@ const FormularioEnvio = () => {
             rows="3"
             placeholder="Digite sua mensagem..."
             className="text-area-mensagem"
-            onChange={({value}) => setInputTexto(value)}
+            onChange={({target}) => setInputTexto(target.value)}
             value={inputTexto}
         ></textarea>
         <button 
             className="botao cor-primaria botao-enviar"
             onClick={ _=> handleClickEnviar()}
         >
-            <i className="fa fa-paper-plane"/>            
+            <i className="fa fa-paper-plane"/>
         </button>
     </div>)
 }
