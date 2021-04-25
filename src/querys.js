@@ -32,9 +32,9 @@ export const LOGIN_USUARIO = gql`
     }
 `
 export const LOGOFF_USUARIO = gql`
-    mutation AdicionaUsuario($loginId: ID!)
+    mutation RemoveUsuario($usuarioId: ID!)
     {
-        login(usuarioId: $loginId)
+        logoff(usuarioId: $usuarioId)
         {
             id
             nome
