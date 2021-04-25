@@ -31,9 +31,12 @@ export const LOGIN_USUARIO = gql`
         }
     }
 `
-export const SUBSCRIPTION_NOVO_USUARIO = gql`
-    subscription NovoUsuarioLogado {
-        entradaUsuario {
+export const LOGOFF_USUARIO = gql`
+    mutation AdicionaUsuario($loginId: ID!)
+    {
+        login(usuarioId: $loginId)
+        {
+            id
             nome
             tipo
         }
@@ -47,6 +50,34 @@ export const ENVIAR_MENSAGEM = gql`
                 id
                 nome
                 tipo
+            }
+        }
+    }
+`
+export const SUBSCRIPTION_NOVO_USUARIO = gql`
+    subscription NovoUsuarioLogado {
+        entradaUsuario {
+            nome
+            tipo
+        }
+    }
+`
+export const SUBSCRIPTION_SAIU_USUARIO = gql`
+    subscription UsuarioDesLogado {
+        saidaUsuario {
+            id
+            nome
+            tipo
+        }
+    }
+`
+export const SUBSCRIPTION_NOVA_MENSAGEM = gql`
+    subscription NovaMensagemEnviada {
+        atualizarMensagens {
+            conteudo
+            usuario {
+                id
+                nome
             }
         }
     }

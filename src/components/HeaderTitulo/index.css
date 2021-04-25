@@ -1,11 +1,19 @@
+.header {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    padding-top: 2px;
+}
 .titulo {
     color: #FFF;
     font-size: 30;
     align-items: center;
     justify-content: center;
+    flex: 1;
+    padding-left: 8%;
 }
 
 .botao-logoff {
-    justify-self: flex-end;
     color: #FFF;
 }

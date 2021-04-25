@@ -1,6 +1,6 @@
 .formulario-envio {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-end;
 }
 .text-area-mensagem {
@@ -12,6 +12,6 @@
     flex: 1;
 }
 .botao-enviar {
-    margin: 0px 10px;
-    font-size: 35px;
+    margin-left: 10px;
+    font-size: 35px;    
 }

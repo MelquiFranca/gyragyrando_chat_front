@@ -5,22 +5,25 @@ import { ENVIAR_MENSAGEM } from '../../querys'
 const FormularioEnvio = () => {
     const [inputTexto, setInputTexto] = useState('')
     const [enviarMensagem, { loading, error }] = useMutation(ENVIAR_MENSAGEM, {
-        onCompleted: dados => console.log(dados),
-        // onError: error => alert('Ocorreu um erro ao enviar a Mensagem.')
+        // onCompleted: dados => ,
+        onError: erro => console.log(erro)
     })
-
-    const handleClickEnviar = () => {
+    const handleClickEnviar = (e) => {
+        e.preventDefault()
+        const idUsuarioLogado = localStorage.getItem('id')
         enviarMensagem({ 
             variables: {
                 conteudo: inputTexto,
-                usuarioId: localStorage.getItem('id')
+                usuarioId: idUsuarioLogado
             }
         })
+
+        setInputTexto('')
     }
 
     return (<div className="formulario-envio">
         <textarea 
-            id="" 
+            id=""
             cols="60" 
             rows="3"
             placeholder="Digite sua mensagem..."
@@ -30,7 +33,7 @@ const FormularioEnvio = () => {
         ></textarea>
         <button 
             className="botao cor-primaria botao-enviar"
-            onClick={ _=> handleClickEnviar()}
+            onClick={ e=> handleClickEnviar(e)}
         >
             <i className="fa fa-paper-plane"/>
         </button>
