@@ -4,10 +4,21 @@
     justify-content: flex-start;
     margin: 5px 0;
 }
-.avatar i {
+.avatar-login {
+    background: #FFF;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 5px 0;
+}
+.avatar i, .avatar-login i {
     margin: 0 5px 0 0;
 }
-.nome-usuario {
+.avatar-login .nome-usuario {
+    color: #555;
+    font-size: 14px;
+}
+.avatar .nome-usuario {
     color: #555;
     font-size: 12px;    
 }
@@ -22,7 +33,7 @@
     .avatar i {
         margin: 5px 0;
     }
-    .nome-usuario {
+    .avatar .nome-usuario {
         font-size: 10px;
     }
 }

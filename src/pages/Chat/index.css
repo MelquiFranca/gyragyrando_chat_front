@@ -27,6 +27,17 @@
     overflow: auto;
 }
 
+.notificacoes {
+    flex-direction: column;
+    z-index: 5;
+    background: none;
+    width: 40%;
+    height: 50%;
+    top: 0;
+    left: 0;
+    /* top: 50px; */
+    position: absolute;
+}
 @media screen and (max-width: 900px) {
     .conteudo-chat {
         flex-direction: column;
@@ -48,5 +59,8 @@
     }
     .box-usuarios>.label {
         display: none;
+    }
+    .notificacoes {
+        width: 70%;
     }
 }

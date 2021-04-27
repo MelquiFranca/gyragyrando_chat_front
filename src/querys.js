@@ -21,9 +21,9 @@ export const LISTA_MENSAGENS = gql`
     }
 `
 export const LOGIN_USUARIO = gql`
-    mutation AdicionaUsuario($loginNome: String!, $loginTipo: Boolean!)
+    mutation AdicionaUsuario($loginNome: String!, $loginTipo: Boolean!, $loginId: ID)
     {
-        login(nome: $loginNome, tipo: $loginTipo)
+        login(nome: $loginNome, tipo: $loginTipo, id: $loginId)
         {
             id
             nome
@@ -51,6 +51,15 @@ export const ENVIAR_MENSAGEM = gql`
                 nome
                 tipo
             }
+        }
+    }
+`
+export const LOGADO = gql`
+    query Logado {
+        me {
+            id
+            nome
+            tipo
         }
     }
 `

@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { useMutation } from '@apollo/client'
+import React, { useState, useEffect } from 'react'
+import { useMutation, useQuery } from '@apollo/client'
 import Container from '../../components/Container'
 import HeaderTitulo from '../../components/HeaderTitulo'
-import { LOGIN_USUARIO } from '../../querys'
+import { LOGIN_USUARIO, LOGADO } from '../../querys'
 import './index.css'
 
 const Login = ({history}) => {
@@ -12,16 +12,28 @@ const Login = ({history}) => {
     const [loginUsuario, { data, loading, error }] = useMutation(LOGIN_USUARIO, {
         onCompleted: dados => {
             if(error)
-                alert(error.errors[0].message)
+                alert(error?.errors[0]?.message)
+            
                 
             if(dados?.login) {
                 localStorage.setItem('id', dados.login.id)
                 localStorage.setItem('nome', dados.login.nome)
                 localStorage.setItem('tipo', dados.login.tipo)
                 history.push('Chat')
+            } else {
+                alert('Já existe usuário logado com esse Nickname.')
             }
         }
     })
+    
+    useEffect(() => {
+        const id = localStorage.getItem('id')
+        const nome = localStorage.getItem('nome')
+        const tipo = localStorage.getItem('tipo')
+
+        loginUsuario({ variables: { loginId: id, loginNome: nome, loginTipo: tipo === "true"} })
+
+    }, []);
     
     const handleClickLogin = () => {
         if(inputApelido.trim().length < 3) {
@@ -29,7 +41,7 @@ const Login = ({history}) => {
             return
         }       
 
-        loginUsuario({ variables: { loginNome: inputApelido, loginTipo: inputAvatar === '1' } })        
+        loginUsuario({ variables: { loginNome: inputApelido, loginTipo: inputAvatar === '1' } })
     }
 
     if(!loading && error) 
