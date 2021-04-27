@@ -12,6 +12,7 @@ export const LISTA_MENSAGENS = gql`
     query QueryMensagens {
         mensagens {
             id
+            data
             conteudo
             usuario {
                 id
@@ -45,7 +46,9 @@ export const LOGOFF_USUARIO = gql`
 export const ENVIAR_MENSAGEM = gql`
     mutation EnviaMensagem($usuarioId: ID!, $conteudo: String!) {
         novaMensagem(usuarioId: $usuarioId, conteudo: $conteudo) {
+            id
             conteudo
+            data
             usuario {
                 id
                 nome
@@ -66,6 +69,7 @@ export const LOGADO = gql`
 export const SUBSCRIPTION_NOVO_USUARIO = gql`
     subscription NovoUsuarioLogado {
         entradaUsuario {
+            id
             nome
             tipo
         }

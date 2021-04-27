@@ -20,31 +20,19 @@ const Chat = ({history}) => {
 
     useEffect(() => {
         const id = localStorage.getItem('id')
-        const nome = localStorage.getItem('nome')
-
-        if(!id || !nome)
+        if(!id)
             history.push('')
     }, []);
-    
-    useEffect(()=> {    
-        if(dataMensagens?.mensagens)
-            setListaMensagens(dataMensagens.mensagens)
-    }, [loadingMensagens, dataMensagens])
-    useEffect(()=> {    
-        if(dataUsuarios?.usuarios)
-            setListaUsuarios(dataUsuarios.usuarios)
-    }, [loadingUsuarios, dataUsuarios])
-
     useEffect(() => {
         if(!loadingAtualizarMensagens && dataAtualizarMensagens?.atualizarMensagens?.conteudo) {
             setListaMensagens([...listaMensagens, dataAtualizarMensagens.atualizarMensagens])            
-        }        
-    }, [dataAtualizarMensagens]);
+        }
+    }, [loadingAtualizarMensagens, dataAtualizarMensagens]);
 
     useEffect(() => {
         if(!loadingLogin && dataLogin?.entradaUsuario?.id)
             setListaUsuarios([...listaUsuarios, dataLogin.entradaUsuario])
-    }, [dataLogin, loadingLogin]);
+    }, [loadingLogin, dataLogin]);
         
     useEffect(() => {
         let novaLista
@@ -55,8 +43,17 @@ const Chat = ({history}) => {
             novaLista = listaUsuarios
         }
         setListaUsuarios(novaLista)
-    }, [dataLogoff, loadingLogoff]);
-        
+    }, [loadingLogoff]);
+             
+    useEffect(()=> {    
+        if(dataMensagens?.mensagens)
+            setListaMensagens(dataMensagens.mensagens)
+    }, [loadingMensagens, dataMensagens])
+    useEffect(()=> {    
+        if(dataUsuarios?.usuarios)
+            setListaUsuarios(dataUsuarios.usuarios)
+    }, [loadingUsuarios, dataUsuarios])
+
     
 
     if(errorUsuarios && errorMensagens) return <p>Erro ao carregar Informações</p>
