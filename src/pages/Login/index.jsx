@@ -31,7 +31,8 @@ const Login = ({history}) => {
         const nome = localStorage.getItem('nome')
         const tipo = localStorage.getItem('tipo')
 
-        loginUsuario({ variables: { loginId: id, loginNome: nome, loginTipo: tipo === "true"} })
+        if(id)
+            loginUsuario({ variables: { loginId: id, loginNome: nome, loginTipo: tipo === "true"} })
 
     }, []);
     
